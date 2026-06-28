@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gobierno del Estado de Pacisia</title>
+    <title>Estado de Pacisia</title>
     <link rel="icon" type="image/png" href="Escudo del Estado de Pacisia.png">
+    <!-- Tipografías Modernas y Geométricas -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
     <style>
         :root {
-            --bg: #ffffff;
-            --text-main: #1a1a1a;
-            --text-sub: #444444;
-            --border: #eaeaea;
-            --accent: #000000;
-            --hover: #f9f9f9;
+            --blue-dark: #003da5;    
+            --blue-light: #7a9ad1;   
+            --white-pure: #ffffff;   
+            --bg-soft: #f8fafc;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --border: #e2e8f0;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body { 
-            background-color: var(--bg); 
+            background-color: var(--bg-soft); 
             color: var(--text-main); 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.8;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* --- NAVEGACIÓN --- */
         header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             height: 80px;
             width: 100%;
             position: fixed;
@@ -37,105 +44,226 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 10%;
+            padding: 0 8%;
             z-index: 1000;
             border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.02);
+            transition: var(--transition);
         }
 
-        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-main); cursor: pointer; }
-        .nav-brand img { height: 50px; width: auto; }
-        .nav-brand div { border-left: 1px solid var(--border); padding-left: 12px; }
-        .nav-brand h1 { font-size: 0.9rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+        .nav-brand { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-main); }
+        .nav-symbols { display: flex; align-items: center; gap: 10px; }
+        .nav-symbols img { height: 42px; width: auto; }
+        .nav-brand div { border-left: 2px solid var(--border); padding-left: 15px; }
+        .nav-brand h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-main); }
 
-        nav { display: flex; gap: 30px; }
+        nav { display: flex; gap: 30px; align-items: center; }
         nav a { 
             text-decoration: none; 
-            color: var(--text-sub); 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            transition: 0.2s;
-            text-transform: uppercase;
+            color: var(--text-main); 
+            font-size: 0.9rem; 
+            font-weight: 700; 
+            position: relative;
+            padding: 6px 0;
         }
-        nav a:hover { color: var(--accent); }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 2px;
+            background-color: var(--blue-dark);
+        }
 
-        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; border: none; background: none; color: var(--accent); }
-
-        /* --- CONTENEDORES --- */
-        main { padding-top: 140px; max-width: 1100px; margin: 0 auto; padding-left: 20px; padding-right: 20px; min-height: 80vh; }
+        /* --- SECCIÓN PRINCIPAL: PAISAJE --- */
+        .gov-advertising {
+            position: relative;
+            margin-top: 80px;
+            min-height: 75vh;
+            background: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 8%;
+            overflow: hidden;
+        }
         
-        section { display: none; animation: fadeIn 0.4s ease; }
-        section.active { display: block; }
+        .adv-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .adv-text {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-        h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 30px; }
+        .adv-phrase {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 4rem;
+            color: var(--white-pure);
+            font-weight: 900;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+        }
 
-        /* --- HERO --- */
-        .hero { text-align: center; margin-bottom: 80px; }
-        .hero img { width: 100%; max-width: 850px; border-radius: 8px; margin-bottom: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-        .hero p { color: var(--text-sub); font-size: 1.2rem; max-width: 800px; margin: 0 auto 20px; }
+        /* --- INFORMACIÓN DE LA PÁGINA --- */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
 
-        /* --- FOOTER --- */
-        footer { margin-top: 100px; padding: 80px 10% 40px; border-top: 1px solid var(--border); text-align: center; background: #fafafa; }
-        footer img { height: 70px; margin-bottom: 25px; }
-        footer p { font-size: 0.8rem; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.15em; }
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            margin-bottom: 40px;
+            text-align: center;
+        }
 
-        /* --- MOBILE --- */
+        /* Contenedor institucional de símbolos nacionales */
+        .flag-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 45px;
+            background: var(--white-pure);
+            padding: 15px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .national-flag {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .flag-caption {
+            display: block;
+            margin-top: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-sub);
+        }
+
+        .info-card {
+            background: var(--white-pure);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+        }
+
+        .info-card p {
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            margin-bottom: 25px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .info-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        footer { 
+            background: #0b1329; 
+            color: var(--white-pure); 
+            padding: 50px 10%; 
+            text-align: center; 
+        }
+        footer p { 
+            font-size: 0.9rem; 
+            color: #64748b; 
+            font-weight: 500; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+        }
+        .motto { 
+            margin-top: 10px; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-size: 1rem; 
+            color: var(--blue-light); 
+            font-weight: 700; 
+            letter-spacing: 0.1em; 
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 992px) {
+            .adv-phrase { font-size: 2.8rem; }
+            .info-card { padding: 35px; }
+        }
+
         @media (max-width: 768px) {
-            nav { 
-                display: none; flex-direction: column; position: absolute; 
-                top: 80px; left: 0; width: 100%; background: white; 
-                padding: 30px; border-bottom: 1px solid var(--border); 
-                gap: 20px; text-align: center;
-            }
-            nav.mobile-active { display: flex; }
-            .mobile-menu-btn { display: block; }
+            .adv-phrase { font-size: 2.2rem; }
             header { padding: 0 5%; }
+            nav { display: none; }
+            .section-title { font-size: 1.6rem; }
+            .nav-symbols img:last-child { display: none; } /* En pantallas muy pequeñas simplifica la barra */
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-brand" onclick="show('inicio')">
-            <img src="Escudo del Estado de Pacisia.png" alt="Escudo">
+    <header id="mainHeader">
+        <div class="nav-brand">
+            <div class="nav-symbols">
+                <img src="Escudo del Estado de Pacisia.png" alt="Escudo Oficial">
+                <img src="Bandera del Estado de Pacisia.png" alt="Bandera Oficial">
+            </div>
             <div><h1>Estado de Pacisia</h1></div>
         </div>
         <nav id="mainNav">
-            <a href="javascript:void(0)" onclick="show('inicio')">Inicio</a>
+            <a href="javascript:void(0)">Inicio</a>
         </nav>
-        <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     </header>
 
-    <main>
-        <section id="inicio" class="active">
-            <div class="hero">
-                <img src="Bandera del Estado de Pacisia.png" alt="Bandera">
-                <h2>Portal Oficial del Estado de Pacisia</h2>
-                <p>Este es el portal oficial del Estado de Pacisia. Bienvenido a la sede digital del Gobierno del Estado de Pacisia. Este espacio constituye el eje central de comunicación entre el Estado y la ciudadanía, garantizando el acceso a la información oficial, la transparencia administrativa y el marco legal que rige nuestra nación soberana.</p>
-                <p>Bajo la dirección del Poder Ejecutivo, trabajamos en la consolidación de nuestras instituciones para asegurar el orden, el desarrollo sostenible y la defensa de nuestra integridad territorial.</p>
+    <div class="gov-advertising">
+        <div class="adv-container">
+            <div class="adv-text">
+                <h2 class="adv-phrase">
+                    Grandes logros que transforman nuestra historia.
+                </h2>
             </div>
-        </section>
+        </div>
+    </div>
+
+    <!-- SECCIÓN ÚNICA DE INFORMACIÓN SOBERANA -->
+    <main>
+        <h3 class="section-title">Portal Oficial del Estado</h3>
+        
+        <!-- Despliegue protocolario del Pabellón Nacional -->
+        <div class="flag-container">
+            <img src="Bandera del Estado de Pacisia.png" alt="Pabellón Nacional del Estado de Pacisia" class="national-flag">
+            <span class="flag-caption">Pabellón Nacional</span>
+        </div>
+
+        <div class="info-card">
+            <p>Bienvenido a la plataforma informativa centralizada del Estado de Pacisia. Este espacio constituye el canal oficial de comunicación para la difusión de los asuntos institucionales, la preservación de nuestra identidad nacional y el resguardo de la soberanía de la nación.</p>
+            <p>A través de este medio, se coordinan las directrices y líneas estratégicas del Estado para velar por el correcto desarrollo, el orden administrativo interno y el bienestar de los integrantes de nuestro territorio nacional.</p>
+        </div>
     </main>
 
     <footer>
-        <img src="Escudo del Estado de Pacisia.png" alt="Logo de Pacisia">
-        <p>Gobierno del Estado de Pacisia &copy; 2026</p>
-        <p style="margin-top: 10px; font-weight: 700; opacity: 0.4;">Soberanía • Progreso • Pacisia</p>
+        <p>Estado de Pacisia &copy; 2026</p>
+        <p class="motto">Soberanía • Progreso • Pacisia</p>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById('mainNav').classList.toggle('mobile-active');
-        }
-
-        function show(id) {
-            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-            const target = document.getElementById(id);
-            if(target) target.classList.add('active');
-            document.getElementById('mainNav').classList.remove('mobile-active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>
